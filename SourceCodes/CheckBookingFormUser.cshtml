@@ -1,0 +1,49 @@
+﻿@page
+@model WebApplication1.Pages.CheckBookingFormUserModel
+@{
+    Layout = null;
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome</title>
+</head>
+<body>
+    <p>@Model.Message</p>
+    <form method="post" asp-page="CheckBookingFormUser">
+        <h1 style="text-align: center;"><strong>Booking Information</strong></h1>
+
+        <table style="height: 17px; width: 100%; border-collapse: collapse; border-style: solid; margin-left: auto; margin-right: auto;" border="1">
+            <tbody>
+                <tr style="height: 17px;">
+                    <th style="width: 12.5%; height: 17px;">Date</th>
+                    <th style="width: 12.5%; height: 17px;">Time</th>
+                    <th style="width: 12.5%; height: 17px;">Pub</th>
+                    <th style="width: 12.5%; height: 17px;">Table</th>
+                    <th style="width: 12.5%; height: 17px;">Max Number of seats</th>
+                    <th style="width: 12.5%; height: 17px;">Address</th>
+                    <th style="width: 12.5%; height: 17px;"></th>
+                </tr>
+                @foreach (var booking in Model.bookingInfo)
+                {
+                    <tr>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => booking.BookingDate)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => booking.BookingTime)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => booking.PubName)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => booking.TableName)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => booking.MaxNoSeats)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => booking.Address)</td>
+                        <td style="text-align: center;"><input type="submit" value="Delete" asp-page-handler="DeleteBooking" asp-route-id=@booking.BookingId /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p style="text-align: left;">
+            <input type="submit" value="Back" asp-page-handler="Back" style="height:3em; width: 20%;" />
+        </p>
+    </form>
+</body>
+<div>
+    <footer class="border-top footer text-muted">
+        <p class="container" style="font-size:50%"><em>100438521 - Pub Booking</em></p>
+    </footer>
+</div>

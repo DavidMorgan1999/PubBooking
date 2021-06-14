@@ -1,0 +1,60 @@
+﻿@page
+@model WebApplication1.Pages.MakeBookingFormUserModel
+@{
+    Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome</title>
+</head>
+<body>
+
+    <p>@Model.Message</p>
+    <form method="post" asp-page="MakeBookingFormUser">
+        <h1 style="text-align: center;"><strong>Pub Information</strong></h1>
+        <p>
+            Date you wish to book:
+            <input class="form-control" type="date" data-val="true" data-val-require="The Date field is required" id="Date" name="Date" value="@Model.Today" min="@Model.Today" asp-for="@Model.Date" />
+            <input type="submit" value="Select" asp-page-handler="DayUpdate" />
+            </p>
+        <p style="font-size: 75%;">
+           Search by town: 
+            <input style="font-size: 75%;" type="text" asp-for="@Model.PubName" /> 
+        <input style="font-size: 75%;" type="submit" value="Search" asp-page-handler="SearchPubs" />
+        </p>
+        <table style="height: 17px; width: 100%; border-collapse: collapse; border-style: solid;" border="1">
+            <tbody>
+                <tr style="height: 17px;">
+                    <th style="width: 12.5%; height: 17px;">Name</th>
+                    <th style="width: 12.5%; height: 17px;">Street</th>
+                    <th style="width: 12.5%; height: 17px;">Town</th>
+                    <th style="width: 12.5%; height: 17px;">Postcode</th>
+                    <th style="width: 12.5%; height: 17px;">Open</th>
+                    <th style="width: 12.5%; height: 17px;">Close</th>
+                    <th style="width: 12.5%; height: 17px;"></th>
+                </tr>
+                @foreach (var pub in Model.pubInfo)
+                {
+                    <tr>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => pub.PubName)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => pub.Street)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => pub.Town)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => pub.Postcode)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => pub.Open)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => pub.Close)</td>
+                        <td style="text-align: center;"><input type="submit" value="Select" asp-page-handler="MakeBooking" asp-route-id=@pub.PubId asp-route-open=@pub.Open asp-route-close=@pub.Close asp-route-name=@pub.PubName asp-route-date=@Model.Date /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p style="text-align: left;">
+            <input type="submit" value="Back" asp-page-handler="Back" style="height:3em; width: 20%;" />
+        </p>
+    </form>
+</body>
+<div>
+    <footer class="border-top footer text-muted">
+        <p class="container" style="font-size:50%"><em>100438521 - Pub Booking</em></p>
+    </footer>
+</div>

@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  webapplication1:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 80:80
+
+  bookingmysql:
+    build: ./Dockerfile_MYSQL
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw 
+    volumes:
+      - mysql-volume:/var/lib/mysql
+    
+volumes:
+  mysql-volume:

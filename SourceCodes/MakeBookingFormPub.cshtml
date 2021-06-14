@@ -1,0 +1,74 @@
+﻿@page
+@model WebApplication1.Pages.MakeBookingFormPubModel
+@{
+    Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome</title>
+</head>
+<body>
+
+    <form method="post" asp-page="MakeBookingFormPub">
+        <h1 style="text-align: center;"><strong>Customer Info</strong></h1>
+        <p>
+            <span style="color: #ff0000;
+        white-space: pre-wrap;">@Model.Message</span>
+    </p>
+    <p>
+        Date you wish to book:
+        <input class="form-control" type="date" data-val="true" data-val-require="The Date field is required" id="Date" name="Date" value="@Model.Today" min="@Model.Today" asp-for="@Model.Date" />
+    </p>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td style="text-align: right;">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Title</td>
+            <td style="text-align: left;">
+                <select name="title">
+                    <option asp-for="@Model.Title">Mr</option>
+                    <option asp-for="@Model.Title">Mrs</option>
+                    <option asp-for="@Model.Title">Ms</option>
+                    <option asp-for="@Model.Title">Mx</option>
+                    <option asp-for="@Model.Title">Dr</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">First name</td>
+            <td style="text-align: left;"><input type="text" asp-for="@Model.Fname" /></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Surname</td>
+            <td style="text-align: left;"><input type="text" asp-for="@Model.Sname" /></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Email</td>
+            <td style="text-align: left;"><input type="text" asp-for="@Model.Email" /></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Phone</td>
+            <td style="text-align: left;"><input type="text" asp-for="@Model.PhoneNo" /></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="submit" value="Create" /></td>
+        </tr>
+    </table>
+    <p style="text-align: left;">
+        <input type="submit" value="Back" asp-page-handler="Back" style="height:3em; width: 20%;" />
+    </p>
+</form>
+</body>
+<div>
+    <footer class="border-top footer text-muted">
+        <p class="container" style="font-size:50%"><em>100438521 - Pub Booking</em></p>
+    </footer>
+</div>
