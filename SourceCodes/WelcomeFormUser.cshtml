@@ -1,0 +1,35 @@
+﻿@page
+@model WebApplication1.Pages.WelcomeFormUserModel
+@{
+    Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome</title>
+</head>
+<body>
+    <p></p>
+    <h1 style="text-align: center;">
+        <strong>Welcome @Model.Name</strong>
+    </h1>
+    <p>&nbsp;</p>
+    <form method="post" asp-page="WelcomeFormUser">
+        <p style="text-align: center;">
+            <input type="submit" value="MakeBooking" asp-page-handler="MakeBooking"  style="height: 5em; width: 50%;"/>
+        </p>
+        <p style="text-align: center;">&nbsp;</p>
+        <p style="text-align: center;">
+            <input type="submit" value="CheckBooking" asp-page-handler="CheckBooking" style="height:5em; width: 50%;"/>
+        </p>
+        <p style="text-align: left;">
+            <input type="submit" value="Log Out" asp-page-handler="LogOut" style="height:3em; width: 20%;"/>
+        </p>
+</form>
+
+</body>
+<div>
+    <footer class="border-top footer text-muted">
+        <p class="container" style="font-size:50%"><em>100438521 - Pub Booking</em></p>
+    </footer>
+</div>
